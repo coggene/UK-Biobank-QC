@@ -53,7 +53,7 @@ Input files:
 I preferentially wanted to keep individuals with cognitive data available. I first extracted phenotypic data using ukbconv. From the resulting .tab file, I was interested in preferentially keeping those individuals who had data available in at least one of columns 3, 4 or 5:
 
 On terminal:
-# If columns 3, 4 or 5 does not equal to NA, print first column (containing sample IDs) and place in new file
+#### If columns 3, 4 or 5 does not equal to NA, print first column (containing sample IDs) and place in new file
 awk '$3 != "NA" || $4 != "NA" || $5 != "NA" {print $1}' ids_cognition.tab | sed "1d" > IDstoKeep.txt
 
 
