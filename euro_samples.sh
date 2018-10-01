@@ -23,4 +23,4 @@ awk '$5 == "CEU" {print $2, $3, $4}' ukb_1kg_labelled.eigenvec > CEU_PCs1-8.txt
 awk '$5 == "UKB" {print $1, $2, $3, $4}' ukb_1kg_labelled.eigenvec > UKB_PCs1-8.txt
 
 ## Run R script to calculate mahalinobis distance of each sample in UKB to the multi-mean of CEU samples and output a list of european samples
-Rscript pca_mb.sh
+Rscript pca_maha.R
