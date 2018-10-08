@@ -72,14 +72,17 @@ Creates a list of SNPs that have an info score greater than 0.9 and MAF greater 
 
 For each chromosome:
 
-../plink2 --bgen ukb_imp_chr22_v3.bgen --sample ukb23739_imp_chr22_v3_s487334.sample --keep euro_samples13.txt --remove samplesToRemove.txt --exclude UKBioBiLallfreqSNPexclude.dat --extract snpsToKeep_chr22 --geno 0.02 --make-bed --out chr22_cleaned
+plink2 --bgen ukb_imp_chr22_v3.bgen --sample ukb23739_imp_chr22_v3_s487334.sample --keep euro_samples13.txt --remove samplesToRemove.txt --exclude UKBioBiLallfreqSNPexclude.dat --extract snpsToKeep_chr22 --geno 0.02 --make-bed --out chr22_cleaned
 
 ### Merge Chromosome specific cleaned files
 
-Last step (project specific):
+plink merge-list ukb_imp_chr_plink.txt --out ukb_imp_merged
+
+### Last step (project specific):
 
 Filter out related individuals as well as SNPs that fail Hardy Weinburg Tests (affected by relatedness, therefore must be carried out last).
 
+plink --bfile ukb_imp_merged --keep IDsTOkeep.txt --hwe 0.000001 --make-bed --out ukb_imp_cleaned 
 
 
 
