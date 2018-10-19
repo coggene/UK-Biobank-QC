@@ -2,7 +2,7 @@
 ## Removing samples on basis of high heterozygosity, high missingness, discordent sex info., and chromosomal aneuploidies. 
 ## Relatedness (to be carried out last) and ancestry (carried out seperately) not included.
 
-awk '$12 != $13 {print $1, $12, $13}' sample_qc.txt > discordent_sex_ids.txt
+awk '$12 != $13 {print $1, $2}' sample_qc.txt > discordent_sex_ids.txt
 awk '$21==1 {print $1, $2}' sample_qc.txt > het_missing_outliers.txt
 awk '$22==1 {print $1, $2}' sample_qc.txt > sex_aneuploidy.txt
 # Find samples whos IDs begin with a minus (indicates these samples have retracted consent) and remove
