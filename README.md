@@ -68,21 +68,26 @@ Input files:
 
 Creates a list of SNPs that have an info score greater than 0.9 and MAF greater than 0.001 for each chromosome.
 
-### Plink command:
+I merged output files:
 
-For each chromosome:
+cat snpsToKeep_chr* > snpsToKeep.txt
 
-plink2 --bgen ukb_imp_chr22_v3.bgen --sample ukb23739_imp_chr22_v3_s487334.sample --keep euro_samples13.txt --remove samplesToRemove.txt --exclude UKBioBiLallfreqSNPexclude.dat --extract snpsToKeep_chr22 --geno 0.02 --make-bed --out chr22_cleaned
+## Merge bgen files using https://bitbucket.org/gavinband/bgen
 
-### Merge Chromosome specific cleaned files
+cat-bgen -g ukb_imp_chr1_v3.bgen ukb_imp_chr2_v3.bgen ukb_imp_chr3_v3.bgen ukb_imp_chr4_v3.bgen ukb_imp_chr5_v3.bgen ukb_imp_chr6_v3.bgen ukb_imp_chr7_v3.bgen ukb_imp_chr8_v3.bgen ukb_imp_chr9_v3.bgen ukb_imp_chr10_v3.bgen ukb_imp_chr11_v3.bgen ukb_imp_chr12_v3.bgen ukb_imp_chr13_v3.bgen ukb_imp_chr14_v3.bgen ukb_imp_chr15_v3.bgen ukb_imp_chr16_v3.bgen ukb_imp_chr17_v3.bgen ukb_imp_chr18_v3.bgen ukb_imp_chr19_v3.bgen ukb_imp_chr20_v3.bgen ukb_imp_chr21_v3.bgen ukb_imp_chr22_v3.bgen -og concatenated.bgen
 
-plink merge-list ukb_imp_chr_plink.txt --out ukb_imp_merged
+## QC using Plink
+
+Use and .sample file
+
+plink2 --bgen concatenated.bgen --sample ukb23739_imp_chr18_v3_s487395.sample --keep euro_samples.txt --remove samples_to_remove.txt --exclude freqsnps_ToRemove --extract snpsToKeep.txt --geno 0.02 --make-bed --out ukb_imp_cleaned
+
 
 ### Last step (project specific):
 
 Filter out related individuals as well as SNPs that fail Hardy Weinburg Tests (affected by relatedness, therefore must be carried out last).
 
-plink --bfile ukb_imp_merged --keep IDsTOkeep.txt --hwe 0.000001 --make-bed --out ukb_imp_cleaned 
+plink --bfile ukb_imp_merged --keep IDsTOkeep.txt --hwe 0.000001 --make-bed --out ukb_imp_cleaned_rel_hwe
 
 
 
