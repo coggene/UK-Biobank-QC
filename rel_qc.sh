@@ -2,7 +2,7 @@
 # create_new_relfile1.py
 # rel.py
 
-Inputs:
+#Inputs:
 # $1 = rel file
 # $2 = list of individuals you preferentially want to keep
 # $3 = output file name
@@ -27,4 +27,4 @@ python create_new_relfile1.py $1 ids_to_remove4.txt over4_removed.dat
 
 python rel.py $2 over4_removed.dat extract_4.txt
 
-cat extract_4.txt ids_to_remove4t.txt > $3
+cat extract_4.txt ids_to_remove4.txt > $3
