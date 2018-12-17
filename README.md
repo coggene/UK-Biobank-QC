@@ -83,9 +83,9 @@ plink2 --bgen concatenated.bgen --sample ukb23739_imp_chr18_v3_s487395.sample --
 
 ### Last step (project specific):
 
-Filter out related individuals as well as SNPs that fail Hardy Weinburg Tests (affected by relatedness, therefore must be carried out last). non_related_IDs.txt = output of rel_qc.sh
+Filter out related individuals as well as SNPs that fail Hardy Weinburg Tests (affected by relatedness, therefore must be carried out last). rel_ids_to_exclude.txt = output of rel_qc.sh
 
-plink --bfile ukb_imp_merged --keep non_related_IDs.txt --hwe 0.000001 --make-bed --out ukb_imp_cleaned_rel_hwe
+plink --bfile ukb_imp_merged --remove rel_ids_to_exclude.txt --hwe 0.000001 --make-bed --out ukb_imp_cleaned_rel_hwe
 
 
 
