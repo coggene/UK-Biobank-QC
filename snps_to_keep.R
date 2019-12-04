@@ -2,7 +2,7 @@
 
 for (i in 1:22){
 mfi_chr <- read.table(paste("ukb_mfi_chr", i, "_v3.txt", sep = ""), header = F)
-snpsTokeep <- mfi_chr[mfi_chr$V6 > 0.001 & mfi_chr$V8 > 0.9,]
+snpsTokeep <- mfi_chr[mfi_chr$V6 > 0.01 & mfi_chr$V8 > 0.9,]
 write.table(snpsTokeep, paste("snpsTokeep_chr", i, sep = ""), quote = FALSE, row.names = FALSE}
 
 ## Edit resulting files on command line:
