@@ -64,7 +64,7 @@ awk '$3 != "NA" || $4 != "NA" || $5 != "NA" {print $1}' ids_cognition.tab | sed 
 Input files:
 1. Chromomsome specific mfi files supplied by UKB
 
-Creates a list of SNPs that have an info score greater than 0.9 and MAF greater than 0.001 for each chromosome.
+Creates a list of SNPs that have an info score greater than 0.9 and MAF greater than 0.01 for each chromosome.
 
 I merged output files:
 
