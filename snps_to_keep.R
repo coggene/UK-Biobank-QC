@@ -1,4 +1,4 @@
-# Use UK Biobank supplied mfi files to create a list of SNPs for each chromosome with MAF > 0.001 and info score > 0.9. 
+# Use UK Biobank supplied mfi files to create a list of SNPs for each chromosome with MAF > 0.01 and info score > 0.9.
 
 for (i in 1:22){
 mfi_chr <- read.table(paste("ukb_mfi_chr", i, "_v3.txt", sep = ""), header = F)
